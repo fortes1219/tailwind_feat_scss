@@ -1,0 +1,35 @@
+@for $i from 0 through 4 {
+    [data-inset="#{$i * 0.5}rem"] {
+        padding: $i * 0.5rem;
+    }
+}
+
+@for $i from 0 through 100 {
+    [data-width="#{$i}%"] {
+        width: $i * 1%;
+    }
+}
+
+$direction: "all", "left", "right", "top", "bottom", "horizontal", "vertical";
+
+@each $currentDirection in $direction {
+    @for $i from 0 through 6 {
+        [data-space-#{$currentDirection}="#{$i * 0.5rem}"] {
+            @if $currentDirection == "all" {
+                margin: #{$i * 0.5rem};
+            } @else if $currentDirection == "left" {
+                margin-left: #{$i * 0.5rem};
+            } @else if $currentDirection == "right" {
+                margin-right: #{$i * 0.5rem};
+            } @else if $currentDirection == "top" {
+                margin-top: #{$i * 0.5rem};
+            } @else if $currentDirection == "bottom" {
+                margin-bottom: #{$i * 0.5rem};
+            } @else if $currentDirection == "horizontal" {
+                margin: 0 #{$i * 0.5rem};
+            } @else if $currentDirection == "vertical" {
+                margin: #{$i * 0.5rem} 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,116 @@
+@mixin flexBox($direction, $alignItems, $justifyContent) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $alignItems;
+    justify-content: $justifyContent;
+}
+
+@mixin boxSizing {
+    box-sizing: border-box;
+}
+
+@for $i from 0 through 24 {
+    .flex_#{$i} {
+        flex: $i;
+    }
+}
+
+@for $i from 1 through 20 {
+    [data-row-count="#{$i}"] {
+        .data_row {
+            width: calc(100% / #{$i});
+        }
+    }
+}
+
+.row {
+    @include boxSizing;
+    position: relative;
+    width: 100%;
+    margin: 0;
+
+    &.horizontal {
+        @include flexBox(row, flex-start, flex-start);
+        
+        &.v_center {
+            @include flexBox(row, center, flex-start);
+        }
+
+        &.h_center {
+            @include flexBox(row, flex-start, center);
+        }
+
+        &.h_end {
+            @include flexBox(row, flex-start, flex-end);
+        }
+
+        &.bottom_left {
+            @include flexBox(row, flex-end, flex-start);
+        }
+
+        &.bottom_center {
+            @include flexBox(row, flex-end, center);
+        }
+
+        &.bottom_right {
+            @include flexBox(row, flex-end, flex-end);
+        }
+
+        &.stretch {
+            align-items: stretch;
+        }
+    }
+
+    &.vertical {
+        @include flexBox(column, flex-start, flex-start);
+        
+        &.v_center {
+            @include flexBox(column, flex-start, center);
+        }
+
+        &.h_center {
+            @include flexBox(column, center, flex-start);
+        }
+
+        &.h_end {
+            @include flexBox(column, flex-end, flex-start);
+        }
+
+        &.bottom_left {
+            @include flexBox(column, flex-start, flex-end);
+        }
+
+        &.bottom_center {
+            @include flexBox(column, center, flex-end);
+        }
+
+        &.bottom_right {
+            @include flexBox(column, flex-end, flex-end);
+        }
+    }
+
+    &.center {
+        align-items: center;
+        justify-content: center;
+    }
+
+    &.space_between {
+        justify-content: space-between;
+    }
+
+    &.space_around {
+        justify-content: space-around;
+    }
+
+    &.space_evenly {
+        justify-content: space-evenly;
+    }
+
+    &.grow {
+        height: 100%;
+    }
+
+    &.wrap {
+        flex-wrap: wrap;
+    }
+}

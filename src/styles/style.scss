@@ -1,0 +1,22 @@
+@import "_reset.scss";
+@import "_variable.scss";
+@import "_flexBox.scss";
+@import "_dataAttribute.scss";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@mixin flexbox-row-center {
+    @apply flex-row items-center justify-center;
+}
+
+.box {
+    @include flexbox-row-center;
+    img {
+        display: inline;
+    }
+    
+    h1 {
+        @apply text-2xl;
+    }
+}
